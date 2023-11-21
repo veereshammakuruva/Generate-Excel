@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                bat 'git checkout <branch_name>'
+                bat 'git checkout main'
 		bat 'git pull'
             }
         }
