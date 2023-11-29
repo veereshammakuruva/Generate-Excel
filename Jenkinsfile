@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'windows-agent' }
+    agent any
     environment {
         registry = "my-registry"
         tag = "latest"
@@ -21,6 +21,7 @@ pipeline {
                 }
             }
         }
+        /*
         stage('Stop Container') {
             steps {
                 script {
@@ -40,5 +41,6 @@ pipeline {
                 }
             }
         }
+        */
     }
 }
