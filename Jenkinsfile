@@ -11,36 +11,15 @@ pipeline {
         stage('Checkout') {
             steps {
                 bat 'git checkout main'
-		bat 'git pull'
+		        bat 'git pull'
             }
         }
         stage('Build') {
             steps {
-                dir('tsm') {
+                dir('college-management') {
                     bat 'mvn clean package'
                 }
             }
         }
-        /*
-        stage('Stop Container') {
-            steps {
-                script {
-                    try {
-                        bat "docker stop ${oldContainerName}"
-                    } catch (Exception e) {
-                        // Ignore errors if the container is not running or already removed
-                    }
-                }
-            }
-        }
-        stage('Deploy in Docker') {
-            steps {
-                dir('tsm') {
-                    bat 'docker build -t [image-name] .'
-                    bat "docker run -d -p 9090:9090 --name ${newContainerName} [image-name]"
-                }
-            }
-        }
-        */
     }
 }
